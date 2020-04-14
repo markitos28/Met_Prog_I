@@ -1,0 +1,11 @@
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.exe
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.deps.json
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.runtimeconfig.json
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.runtimeconfig.dev.json
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.dll
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\bin\Debug\netcoreapp3.1\Metodologias_Programacion_I.pdb
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\obj\Debug\netcoreapp3.1\Metodologias_Programacion_I.csprojAssemblyReference.cache
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\obj\Debug\netcoreapp3.1\Metodologias_Programacion_I.AssemblyInfoInputs.cache
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\obj\Debug\netcoreapp3.1\Metodologias_Programacion_I.AssemblyInfo.cs
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\obj\Debug\netcoreapp3.1\Metodologias_Programacion_I.dll
+C:\Users\Marcos Sosa\source\repos\Practicas_Y_Ejercicios\Metodologias_Programacion_I\obj\Debug\netcoreapp3.1\Metodologias_Programacion_I.pdb
