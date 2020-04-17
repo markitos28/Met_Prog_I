@@ -20,20 +20,17 @@ namespace Metodologias_Programacion_I
 
         public bool sosIgual(Numero comparable)
         {
-            if (comparable.Valor == this._valor) { return true; }
-            else { return false; }
+            return comparable.Valor == this._valor ? true : false;
         }
 
         public bool sosMenor(Numero comparable)
         {
-            if (comparable.Valor > this._valor) { return true; }
-            else { return false; }
+            return comparable.Valor > this._valor ? true : false;
         }
 
         public bool sosMayor(Numero comparable)
         {
-            if (comparable.Valor < this._valor) { return true; }
-            else { return false; }
+            return comparable.Valor < this._valor ? true : false;
         }
     }
 }

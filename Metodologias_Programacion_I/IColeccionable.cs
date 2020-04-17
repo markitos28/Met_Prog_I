@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Metodologias_Programacion_I
 {
-    public interface IColeccionable
+    public interface IColeccionable<T>
     {
         public int cuantos();
-        public object minimo();
-        public object maximo();
-        public void agregar(IComparable comparable);
-        public bool contiene(IComparable comparable);
+        public T minimo();
+        public T maximo();
+        public void agregar(T comparable);
+        public bool contiene(T comparable);
     }
 }
