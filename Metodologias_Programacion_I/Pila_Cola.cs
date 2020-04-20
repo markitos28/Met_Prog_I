@@ -120,7 +120,7 @@ namespace Metodologias_Programacion_I
         {
             Numero valor;
             bool encontrado = false;
-            for (int i=0; i< cuantos() || encontrado.Equals(false); i++)
+            for (int i=0; i< cuantos() && encontrado.Equals(false); i++)
             {
                 valor = this.cola[i];
                 encontrado= comparable.Valor == valor.Valor ? true : false;
@@ -204,7 +204,7 @@ namespace Metodologias_Programacion_I
         {
             Numero minValue = this.pila[0];
             Numero valor;
-            for (int i = 0; i <= cuantos(); i++)
+            for (int i = 0; i < cuantos(); i++)
             {
                 valor = this.pila[i];
                 minValue = valor.Valor < minValue.Valor ? valor : minValue;
@@ -236,7 +236,7 @@ namespace Metodologias_Programacion_I
         {
             Numero valor;
             bool encontrado = false;
-            for (int i = 0; i < cuantos() || encontrado.Equals(false); i++)
+            for (int i = 0; i < cuantos() && encontrado.Equals(false); i++)
             {
                 valor = this.pila[i];
                 encontrado = comparable.Valor == valor.Valor ? true : false;
@@ -244,5 +244,239 @@ namespace Metodologias_Programacion_I
             return encontrado;
         }
     #endregion
+    }
+
+    class Cola2 : IColeccionable<Persona>
+    {
+
+        List<Persona> cola;
+
+        #region Propio:
+        public Cola2()
+        {
+            this.cola = new List<Persona>();
+        }
+        //Agrega un elemento a la cola.
+        public void push(Persona elemento)
+        {
+            this.cola.Add(elemento);
+        }
+
+        //Extraer un elemento de cola.
+        public Persona pop()
+        {
+            Persona firstCola = this.cola[0];
+            this.cola.RemoveAt(0);
+            return firstCola;
+        }
+
+        //Retorna true si cola está vacía.
+        public bool isEmpty()
+        {
+            return this.cola.Count.Equals(0) ? true : false;
+        }
+
+        //Retorna el elemento al tope de la cola sin sacarlo.
+        public Persona top()
+        {
+            return this.cola[0];
+        }
+
+        //Retorna la cantidad de elementos que tiene cola.
+        public int size()
+        {
+            return this.cola.Count;
+        }
+
+        //Retorna una nueva cola con los elementos en posición invertida(el primero en último lugar).
+        public Cola2 reverse()
+        {
+            Cola2 reverse = new Cola2();
+            for (int i = 1; i <= this.cola.Count; i++)
+            {
+                reverse.push(this.cola[-i]);
+            }
+            return reverse;
+        }
+
+        //Agrega a la cola receptora todos los elementos de otra cola(respetando el orden original de salida).
+        public void pushAll(Cola2 newCola)
+        {
+            for (int i = 0; i < newCola.size(); i++)
+            {
+                this.cola.Add(newCola.pop());
+            }
+        }
+        #endregion
+
+        #region Heredado:
+        //Devuelve la cantidad de elementos comparables que tiene el coleccionable
+        public int cuantos()
+        {
+            return this.cola.Count;
+        }
+
+        //Devuelve el elemento de menor valor de la colección
+        public Persona minimo()
+        {
+            Persona minValue = this.cola[0];
+            Persona valor;
+            for (int i = 0; i < cuantos(); i++)
+            {
+                valor = this.cola[i];
+                minValue = valor.DNI < minValue.DNI ? valor : minValue;
+            }
+            return minValue;
+        }
+
+        //Devuelve el elemento de mayor valor de la colección
+        public Persona maximo()
+        {
+            Persona maxValue = this.cola[0];
+            Persona valor;
+            for (int i = 0; i < cuantos(); i++)
+            {
+                valor = this.cola[i];
+                maxValue = valor.DNI > maxValue.DNI ? valor : maxValue;
+            }
+            return maxValue;
+        }
+
+        //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
+        public void agregar(Persona comparable)
+        {
+            this.cola.Add(comparable);
+        }
+
+        //Devuelve verdadero si el comparable recibido por parámetro está incluido en la colección y falso en caso contrario
+        public bool contiene(Persona comparable)
+        {
+            Persona valor;
+            bool encontrado = false;
+            for (int i = 0; i < cuantos() && encontrado.Equals(false); i++)
+            {
+                valor = this.cola[i];
+                encontrado = comparable.DNI == valor.DNI ? true : false;
+            }
+            return encontrado;
+        }
+        #endregion
+    }
+
+    class Pila2 : IColeccionable<Persona>
+    {
+
+        List<Persona> pila;
+
+        #region Propio:
+        public Pila2()
+        {
+            this.pila = new List<Persona>();
+        }
+        //Agrega un elemento a la cola.
+        public void push(Persona elemento)
+        {
+            this.pila.Add(elemento);
+        }
+
+        //Extraer un elemento de cola.
+        public Persona pop()
+        {
+            Persona firstCola = this.pila[0];
+            this.pila.RemoveAt(0);
+            return firstCola;
+        }
+
+        //Retorna true si cola está vacía.
+        public bool isEmpty()
+        {
+            return this.pila.Count.Equals(0) ? true : false;
+        }
+
+        //Retorna el elemento al tope de la cola sin sacarlo.
+        public Persona top()
+        {
+            return this.pila[0];
+        }
+
+        //Retorna la cantidad de elementos que tiene cola.
+        public int size()
+        {
+            return this.pila.Count;
+        }
+
+        //Retorna una nueva cola con los elementos en posición invertida(el primero en último lugar).
+        public Pila2 reverse()
+        {
+            Pila2 reverse = new Pila2();
+            for (int i = 1; i <= this.pila.Count; i++)
+            {
+                reverse.push(this.pila[-i]);
+            }
+            return reverse;
+        }
+
+        //Agrega a la cola receptora todos los elementos de otra cola(respetando el orden original de salida).
+        public void pushAll(Pila2 newCola)
+        {
+            for (int i = 0; i < newCola.size(); i++)
+            {
+                this.pila.Add(newCola.pop());
+            }
+        }
+        #endregion
+
+        #region Heredado:
+        //Devuelve la cantidad de elementos comparables que tiene el coleccionable
+        public int cuantos()
+        {
+            return this.pila.Count;
+        }
+
+        //Devuelve el elemento de menor valor de la colección
+        public Persona minimo()
+        {
+            Persona minValue = this.pila[0];
+            Persona valor;
+            for (int i = 0; i < cuantos(); i++)
+            {
+                valor = this.pila[i];
+                minValue = valor.DNI < minValue.DNI ? valor : minValue;
+            }
+            return minValue;
+        }
+
+        //Devuelve el elemento de mayor valor de la colección
+        public Persona maximo()
+        {
+            Persona maxValue = this.pila[0];
+            Persona valor;
+            for (int i = 0; i < cuantos(); i++)
+            {
+                valor = this.pila[i];
+                maxValue = valor.DNI > maxValue.DNI ? valor : maxValue;
+            }
+            return maxValue;
+        }
+
+        //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
+        public void agregar(Persona comparable)
+        {
+            this.pila.Add(comparable);
+        }
+
+        //Devuelve verdadero si el comparable recibido por parámetro está incluido en la colección y falso en caso contrario
+        public bool contiene(Persona comparable)
+        {
+            Persona valor;
+            bool encontrado = false;
+            for (int i = 0; i < cuantos() && encontrado.Equals(false); i++)
+            {
+                valor = this.pila[i];
+                encontrado = comparable.DNI == valor.DNI ? true : false;
+            }
+            return encontrado;
+        }
+        #endregion
     }
 }
