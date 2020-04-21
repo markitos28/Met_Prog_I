@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metodologias_Programacion_I
-{
+namespace Metodologias_Programacion_I.Parte_I
+{ 
     class Numero : IComparable<Numero>
     {
         private int _valor;
