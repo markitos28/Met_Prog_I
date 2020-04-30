@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Metodologias_Programacion_I.Parte_II
 {
-    public class Alumno : Humano, IComparable<Alumno>
+    public class Alumno : Humano //, IStrategy<Humano> ,IComparable<Alumno> Nota: Se quita la interfaz IStrategy para no implementar los comparadores con dos argumentos.
     {
         private int _legajo;
         private float _promedio;
@@ -18,37 +18,22 @@ namespace Metodologias_Programacion_I.Parte_II
             base.DNI = in_dni;
             this._legajo = in_legajo;
             this._promedio = in_promedio;
+            base.Estrategia = new StratComparacion_Nombre();
         }
 
-        public bool sosIgual(Alumno comparable)
+        public bool sosIgual(Humano comparable)
         {
-            return comparable.Legajo == this._legajo ? true : false;
-        }
-        public bool sosIgual(Alumno comparable, byte decision)
-        {
-            return decision == 0 ? (comparable.Legajo == this._legajo ? true : false) : (comparable.Promedio == this._promedio ? true : false);
+            return base.Estrategia.sosIgual(this,comparable);
         }
 
-        public bool sosMenor(Alumno comparable)
-        {
-            return comparable.Legajo > this._legajo ? true : false;
+        public bool sosMenor(Humano comparable)
+        { 
+            return base.Estrategia.sosMenor(this,comparable);
         }
 
-        public bool sosMenor(Alumno comparable, byte decision)
+        public bool sosMayor(Humano comparable)
         {
-            return decision == 0 ? (comparable.Legajo > this._legajo ? true : false) : (comparable.Promedio > this._promedio ? true : false);
-            
-        }
-
-        public bool sosMayor(Alumno comparable)
-        {
-            return comparable.Legajo < this._legajo ? true : false;
-        }
-
-        public bool sosMayor(Alumno comparable, byte decision)
-        {
-            return decision == 0 ? (comparable.Legajo < this._legajo ? true : false) : (comparable.Promedio < this._promedio ? true : false);
-
+            return base.Estrategia.sosMayor(this, comparable);
         }
     }
 }

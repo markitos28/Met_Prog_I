@@ -9,6 +9,9 @@ namespace Metodologias_Programacion_I
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("------------------------------Elija la Opcion que quiera ejecutar --------------\n");
+            Console.WriteLine("1) ");
             // Test Ejercicio 9:
 
             //Parte_I.Cola newcola = new Parte_I.Cola();
@@ -77,15 +80,15 @@ namespace Metodologias_Programacion_I
                     for(int i=0; i<newcola4.cuantos();i++)
                     {
                         Alumno uxu = (Alumno)newcola4.pop();
-                        if(nuevoUsuario.sosIgual(uxu,0))
+                        if(nuevoUsuario.sosIgual(uxu))
                         {
                             Console.WriteLine("Alumno, usted ya se encuentra ingresado en el sistema");
                         }
-                        else if (nuevoUsuario.sosMenor(uxu, 0))
+                        else if (nuevoUsuario.sosMenor(uxu))
                         {
                             Console.WriteLine("Alumno, usted posee un legajo menor a {0}", uxu.Legajo);
                         }
-                        else if (nuevoUsuario.sosMayor(uxu, 0))
+                        else if (nuevoUsuario.sosMayor(uxu))
                         {
                             Console.WriteLine("Alumno, usted posee un legajo mayor a {0}", uxu.Legajo);
                         }
@@ -100,17 +103,18 @@ namespace Metodologias_Programacion_I
                     for (int i = 0; i < newcola4.cuantos(); i++)
                     {
                         Alumno uxu = (Alumno)newcola4.pop();
-                        if (nuevoUsuario.sosIgual(uxu, 1))
+                        if (nuevoUsuario.sosIgual(uxu))
                         {
                             Console.WriteLine("Alumno, usted ya se encuentra ingresado en el sistema");
                         }
-                        else if (nuevoUsuario.sosMenor(uxu, 1))
+                        else if (nuevoUsuario.sosMenor(uxu))
                         {
                             Console.WriteLine("Alumno, usted posee un promedio menor a {0}", uxu.Promedio);
                         }
-                        else if (nuevoUsuario.sosMayor(uxu, 1))
+                        else if (nuevoUsuario.sosMayor(uxu))
                         {
                             Console.WriteLine("Alumno, usted posee un promedio mayor a {0}", uxu.Promedio);
+                            
                         }
 
                     }
