@@ -13,6 +13,8 @@ namespace MetProgI.Patron_Iterator
         public Diccionario lista;
         public int actual = 0;
 
+        public int Actual { get; set; }
+
         public ConcreteIterator_Diccionario(Diccionario in_lista)
         {
             this.lista = in_lista;
@@ -31,6 +33,13 @@ namespace MetProgI.Patron_Iterator
         public object Siguiente()
         {
             var anterior = this.lista.Lista_ClaveValor[actual].valor;
+            actual++;
+            return anterior;
+        }
+
+        public object SiguienteCV()
+        {
+            var anterior = this.lista.Lista_ClaveValor[actual];
             actual++;
             return anterior;
         }

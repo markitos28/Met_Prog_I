@@ -19,10 +19,14 @@ namespace MetProgI
                 Console.WriteLine("2) Comparar DNI");
                 Console.WriteLine("3) Comparar Legajo");
                 Console.WriteLine("4) Comparar Promedio");
-                Console.WriteLine("5) Informar Personas(E2)");
-                Console.WriteLine("6) Prueba Patron Iterador(E7)");
-                Console.WriteLine("7) Imprimir Elementos(E8)");
-                Console.WriteLine("8) Informar Maximos y Minimos(E10)");
+                Console.WriteLine("5) Informar Personas(E2P2)");
+                Console.WriteLine("6) Prueba Patron Iterador(E7P2)");
+                Console.WriteLine("7) Imprimir Elementos(E8P2)");
+                Console.WriteLine("8) Informar Maximos y Minimos(E10P2)");
+                Console.WriteLine("9) Test de la Clase GeneradorDeDatosAleatorios");
+                Console.WriteLine("10) Llenar, informar y comparar Comparables (E6P3)");
+                Console.WriteLine("11) Llenar, informar y comparar Vendedores (E9P3)");
+                Console.WriteLine("12) Patron Observer (E14P3)");
                 Console.WriteLine("0) Salir");
                 Console.WriteLine();
                 Console.Write("Ingrese su opcion: ");
@@ -70,6 +74,31 @@ namespace MetProgI
                         break;
                     case 8:
                         Impresiones.Main.Run3();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 9:
+                        Console.Write("\nElija la cantidad de caracteres que desea tener el nombre (mayor a 10): ");
+                        int opcion = new LectorDeDatos().numeroPorTeclado();
+                        Console.WriteLine("Nombre: " + new GeneradorDeDatosAleatorios().stringAleatorio(opcion));
+                        Console.Write("\n\nElija un numero maximo del cual obtener un numero aleatorio: ");
+                        opcion = new LectorDeDatos().numeroPorTeclado();
+                        Console.WriteLine("Numero: " + new GeneradorDeDatosAleatorios().numeroAleatorio(opcion));
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 10:
+                        Impresiones.Main.Run4();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 11:
+                        Impresiones.Main.Run5();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 12:
+                        Patron_Observer.Main.Run();
                         Console.ReadKey();
                         Console.Clear();
                         break;

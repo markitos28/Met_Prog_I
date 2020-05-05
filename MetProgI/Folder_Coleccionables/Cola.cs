@@ -8,26 +8,26 @@ using MetProgI.Folder_Comparables;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    public class Cola : IColeccionable<Persona>, CreateIterator
+    public class Cola : IColeccionable<I_Comparable>, CreateIterator
     {
 
-        List<Persona> cola;
+        List<I_Comparable> cola;
 
         #region Propio:
         public Cola()
         {
-            this.cola = new List<Persona>();
+            this.cola = new List<I_Comparable>();
         }
         //Agrega un elemento a la cola.
-        public void push(Persona elemento)
+        public void push(I_Comparable elemento)
         {
             this.cola.Add(elemento);
         }
 
         //Extraer un elemento de cola.
-        public Persona pop()
+        public I_Comparable pop()
         {
-            Persona firstCola = this.cola[0];
+            I_Comparable firstCola = this.cola[0];
             this.cola.RemoveAt(0);
             return firstCola;
         }
@@ -35,9 +35,9 @@ namespace MetProgI.Folder_Coleccionables
         /// Esta implementacion NO elimina el elemento contenido en la coleccion
         /// </summary>
         /// <returns></returns>
-        public Persona popX(int puntero)
+        public I_Comparable popX(int puntero)
         {
-            Persona firstCola = this.cola[puntero];
+            I_Comparable firstCola = this.cola[puntero];
             return firstCola;
         }
         //Retorna true si cola está vacía.
@@ -47,7 +47,7 @@ namespace MetProgI.Folder_Coleccionables
         }
 
         //Retorna el elemento al tope de la cola sin sacarlo.
-        public Persona top()
+        public I_Comparable top()
         {
             return this.cola[0];
         }
@@ -87,48 +87,56 @@ namespace MetProgI.Folder_Coleccionables
         }
 
         //Devuelve el elemento de menor valor de la colección
-        public Persona minimo()
+        public I_Comparable minimo()
         {
-            Persona minValue = this.cola[0];
-            Persona valor;
+            I_Comparable minValue = this.cola[0];
+            I_Comparable valor;
             for (int i = 0; i < cuantos(); i++)
             {
                 valor = this.cola[i];
-                minValue = valor.DNI < minValue.DNI ? valor : minValue;
+                minValue = valor.sosMenor(minValue) ? valor : minValue;
             }
             return minValue;
         }
 
         //Devuelve el elemento de mayor valor de la colección
-        public Persona maximo()
+        public I_Comparable maximo()
         {
-            Persona maxValue = this.cola[0];
-            Persona valor;
+            I_Comparable maxValue = this.cola[0];
+            I_Comparable valor;
             for (int i = 0; i < cuantos(); i++)
             {
                 valor = this.cola[i];
-                maxValue = valor.DNI > maxValue.DNI ? valor : maxValue;
+                maxValue = valor.sosMayor(maxValue) ? valor : maxValue;
             }
             return maxValue;
         }
 
         //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
-        public void agregar(Persona comparable)
+        public void agregar(I_Comparable comparable)
         {
             this.cola.Add(comparable);
         }
 
         //Devuelve verdadero si el comparable recibido por parámetro está incluido en la colección y falso en caso contrario
-        public bool contiene(Persona comparable)
+        public bool contiene(I_Comparable comparable)
         {
-            Persona valor;
+            IIterator iter = CreateIterator();
             bool encontrado = false;
-            for (int i = 0; i < cuantos() && encontrado.Equals(false); i++)
+            while (!iter.EsFin() && encontrado.Equals(false))
             {
-                valor = this.cola[i];
-                encontrado = comparable.DNI == valor.DNI ? true : false;
+                I_Comparable elemento=(I_Comparable) iter.Siguiente();
+                encontrado = comparable.sosIgual(elemento) ? true : false;
             }
             return encontrado;
+            //I_Comparable valor;
+            //bool encontrado = false;
+            //for (int i = 0; i < cuantos() && encontrado.Equals(false); i++)
+            //{
+            //    valor = this.cola[i];
+            //    encontrado = comparable.sosIgual(valor) ? true : false;
+            //}
+            //return encontrado;
         }
 
         public IIterator CreateIterator()

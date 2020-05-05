@@ -8,7 +8,7 @@ using MetProgI.Patron_Strategy;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class ColeccionMultiple : IColeccionable<Persona>
+    class ColeccionMultiple : IColeccionable<I_Comparable>
     {
         Pila pilaInterna;
         Cola colaInterna;
@@ -32,25 +32,25 @@ namespace MetProgI.Folder_Coleccionables
         }
 
         //Devuelve el elemento de menor valor de la colección
-        public Persona minimo()
+        public I_Comparable minimo()
         {
-            return this.colaInterna.minimo().DNI < this.pilaInterna.minimo().DNI ? this.colaInterna.minimo() : this.pilaInterna.minimo();
+            return this.colaInterna.minimo().sosMenor(this.pilaInterna.minimo()) ? this.colaInterna.minimo() : this.pilaInterna.minimo();
         }
 
         //Devuelve el elemento de mayor valor de la colección
-        public Persona maximo()
+        public I_Comparable maximo()
         {
-            return this.colaInterna.maximo().DNI > this.pilaInterna.maximo().DNI ? this.colaInterna.maximo() : this.pilaInterna.maximo();
+            return this.colaInterna.maximo().sosMayor(this.pilaInterna.maximo()) ? this.colaInterna.maximo() : this.pilaInterna.maximo();
         }
 
         //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
-        public void agregar(Persona comparable)
+        public void agregar(I_Comparable comparable)
         {
             throw new NotImplementedException();
         }
 
         //Devuelve verdadero si el comparable recibido por parámetro está incluido en la colección y falso en caso contrario
-        public bool contiene(Persona comparable)
+        public bool contiene(I_Comparable comparable)
         {
             return this.colaInterna.contiene(comparable) || this.pilaInterna.contiene(comparable) ? true : false;
         }

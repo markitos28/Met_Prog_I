@@ -5,6 +5,7 @@ using MetProgI.Folder_Coleccionables;
 using MetProgI.Folder_Comparables;
 using MetProgI.Generador_Random;
 using MetProgI.Patron_Iterator;
+using MetProgI.Patron_Observer;
 
 namespace MetProgI.Patron_Strategy
 {
@@ -80,6 +81,24 @@ namespace MetProgI.Patron_Strategy
         public bool sosMayor(Persona invocador, Persona comparable)
         {
             return ((Alumno)comparable).Promedio < ((Alumno)invocador).Promedio ? true : false;
+        }
+    }
+
+    public class StratComparacion_Bonus : IStrategy<Persona>
+    {
+        public bool sosIgual(Persona invocador, Persona comparable)
+        {
+            return ((Vendedor)comparable).Bonus.Equals(((Vendedor)invocador).Bonus) ? true : false;
+        }
+
+        public bool sosMenor(Persona invocador, Persona comparable)
+        {
+            return ((Vendedor)comparable).Bonus > ((Vendedor)invocador).Bonus ? true : false;
+        }
+
+        public bool sosMayor(Persona invocador, Persona comparable)
+        {
+            return ((Vendedor)comparable).Bonus < ((Vendedor)invocador).Bonus ? true : false;
         }
     }
 }

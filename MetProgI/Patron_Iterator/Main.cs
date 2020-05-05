@@ -18,7 +18,7 @@ namespace MetProgI.Patron_Iterator
             imprimirElementos(unaCola);
         }
 
-        public static void imprimirElementos(IColeccionable<Persona> coleccion)
+        public static void imprimirElementos(IColeccionable<I_Comparable> coleccion)
         {
             IIterator iter = coleccion.CreateIterator();
             while (!iter.EsFin())

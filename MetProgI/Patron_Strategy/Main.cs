@@ -15,8 +15,8 @@ namespace MetProgI.Patron_Strategy
             Generar generar = new Generar();
             //List<Persona> personas = new List<Persona>();
             //List<Persona> alumnos = new List<Persona>();
-            Cola personas = new Cola();
-            Pila alumnos = new Pila();
+            IColeccionable<I_Comparable> personas = new Cola();
+            IColeccionable<I_Comparable> alumnos = new Pila();
             //--------------------- Creacion de algunas Personas
             Persona p1 = new Persona(generar.Gen_Nombre(), generar.Gen_DNI());
             Persona p2 = new Persona(generar.Gen_Nombre(), generar.Gen_DNI());
@@ -52,14 +52,20 @@ namespace MetProgI.Patron_Strategy
                     break;
                 case 2:
                     cambioEstrategia(personas, new StratComparacion_DNI());
+                    //cambioEstrategia((IColeccionable<Persona>)personas, new StratComparacion_DNI());
+                    //cambioEstrategia((IColeccionable<Persona>)alumnos, new StratComparacion_DNI());
                     cambioEstrategia(alumnos, new StratComparacion_DNI());
                     break;
                 case 3:
                     cambioEstrategia(personas, new StratComparacion_Legajo());
+                    //cambioEstrategia((IColeccionable<Persona>)personas, new StratComparacion_Legajo());
+                    //cambioEstrategia((IColeccionable<Persona>)alumnos, new StratComparacion_Legajo());
                     cambioEstrategia(alumnos, new StratComparacion_Legajo());
                     break;
                 case 4:
                     cambioEstrategia(personas, new StratComparacion_Promedio());
+                    //cambioEstrategia((IColeccionable<Persona>)personas, new StratComparacion_Promedio());
+                    //cambioEstrategia((IColeccionable<Persona>)alumnos, new StratComparacion_Promedio());
                     cambioEstrategia(alumnos, new StratComparacion_Promedio());
                     break;
             }
@@ -105,7 +111,7 @@ namespace MetProgI.Patron_Strategy
         //}
 
         // ----------------------------------------- Ejercicio 9 ------------------------------------------------
-        public static void cambioEstrategia(IColeccionable<Persona> personas, IStrategy<Persona> estrategia)
+        public static void cambioEstrategia(IColeccionable<I_Comparable> personas, IStrategy<Persona> estrategia)
         {
             IIterator iter = personas.CreateIterator();
 

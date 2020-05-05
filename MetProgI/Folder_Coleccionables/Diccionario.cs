@@ -8,7 +8,7 @@ using MetProgI.Patron_Strategy;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class Diccionario: IColeccionable<ClaveValor>, CreateIterator
+    class Diccionario: IColeccionable<I_Comparable>, CreateIterator
     {
         private List<ClaveValor> _clave_valor;
         private Numero _claveDefault;
@@ -22,7 +22,7 @@ namespace MetProgI.Folder_Coleccionables
             ClaveDefault = new Numero(0);
         }
 
-        public void agregar(Numero in_clave, Persona valor)
+        public void agregar(Numero in_clave, I_Comparable valor)
         {
             if (indiceElemento(in_clave).Equals(-1))
                 Lista_ClaveValor.Add(new ClaveValor(in_clave, valor));
@@ -30,7 +30,7 @@ namespace MetProgI.Folder_Coleccionables
                 Lista_ClaveValor[indiceElemento(in_clave)] = new ClaveValor(in_clave, valor);
         }
 
-        public void agregar(Persona valor)
+        public void agregar(I_Comparable valor)
         {
 
             if (indiceElemento(ClaveDefault).Equals(-1))
@@ -50,12 +50,12 @@ namespace MetProgI.Folder_Coleccionables
         /// <returns></returns>
         public int indiceElemento(Numero in_clave)
         {
-            for(int i =0; i< Lista_ClaveValor.Count; i++)
+            ConcreteIterator_Diccionario iter = new ConcreteIterator_Diccionario(this);
+            while(!iter.EsFin())
             {
-                if(Lista_ClaveValor[i].clave.Valor.Equals(in_clave.Valor))
-                {
-                    return i;
-                }
+                ClaveValor elemento = (ClaveValor)iter.SiguienteCV();
+                if (elemento.clave.sosIgual(in_clave))
+                    return iter.Actual;
             }
             return -1;
         }
@@ -66,7 +66,7 @@ namespace MetProgI.Folder_Coleccionables
         /// </summary>
         /// <param name="in_clave"></param>
         /// <returns></returns>
-        public Persona valorDe(Numero in_clave )
+        public I_Comparable valorDe(Numero in_clave )
         {
             int posicion = indiceElemento(in_clave);
             if (!posicion.Equals(-1))
@@ -80,29 +80,27 @@ namespace MetProgI.Folder_Coleccionables
             return Lista_ClaveValor.Count;
         }
 
-        public ClaveValor minimo()
+        public I_Comparable minimo()
         {
-            ClaveValor minimo = Lista_ClaveValor[0];
-            foreach (ClaveValor elemento in Lista_ClaveValor)
+            ConcreteIterator_Diccionario iter = new ConcreteIterator_Diccionario(this);
+            ClaveValor minimo = (ClaveValor)iter.Siguiente();
+            while (!iter.EsFin())
             {
-                if (elemento.valor.ToString().CompareTo(minimo.valor.ToString()) < 0)
-                {
-                    minimo = elemento;
-                }
+                ClaveValor elemento = (ClaveValor)iter.Siguiente();
+                minimo = elemento.valor.sosMenor(minimo) ? elemento : minimo;
             }
             return minimo;
         }
         
 
-        public ClaveValor maximo()
+        public I_Comparable maximo()
         {
-            ClaveValor maximo = Lista_ClaveValor[0];
-            foreach (ClaveValor elemento in Lista_ClaveValor)
+            ConcreteIterator_Diccionario iter = new ConcreteIterator_Diccionario(this);
+            ClaveValor maximo = (ClaveValor)iter.Siguiente();
+            while (!iter.EsFin())
             {
-                if (elemento.valor.ToString().CompareTo(maximo.valor.ToString()) > 0)
-                {
-                    maximo = elemento;
-                }
+                ClaveValor elemento = (ClaveValor)iter.Siguiente();
+                maximo = elemento.valor.sosMayor(maximo) ? elemento : maximo;
             }
             return maximo;
         }
@@ -112,11 +110,13 @@ namespace MetProgI.Folder_Coleccionables
             this.agregar(comparable.clave, comparable.valor);
         }
 
-        public bool contiene(ClaveValor comparable)
+        public bool contiene(I_Comparable comparable)
         {
-            foreach(ClaveValor elemento in Lista_ClaveValor)
+            IIterator iter = CreateIterator();
+            while(!iter.EsFin())
             {
-                if (elemento.valor.Equals(comparable.valor))
+                ClaveValor elemento = (ClaveValor)iter.Siguiente();
+                if (elemento.sosIgual(comparable))
                     return true;
             }
             return false;

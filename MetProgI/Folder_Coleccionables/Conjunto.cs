@@ -8,26 +8,26 @@ using MetProgI.Patron_Strategy;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class Conjunto: IColeccionable<Persona> , CreateIterator
+    class Conjunto: IColeccionable<I_Comparable> , CreateIterator
     {
-        List<Persona> _almacenamiento;
-        public List<Persona> Almacenamiento { get { return _almacenamiento; } private set { this._almacenamiento = value; } }
+        List<I_Comparable> _almacenamiento;
+        public List<I_Comparable> Almacenamiento { get { return _almacenamiento; } private set { this._almacenamiento = value; } }
 
         public Conjunto()
         {
-            Almacenamiento = new List<Persona>();
+            Almacenamiento = new List<I_Comparable>();
         }
 
-        public void agregar(Persona elemento)
+        public void agregar(I_Comparable elemento)
         {
             if(pertenece(elemento).Equals(false))
                 Almacenamiento.Add(elemento);
         }
 
-        public bool pertenece(Persona elemento)
+        public bool pertenece(I_Comparable elemento)
         {
             bool pertenece = false;
-            foreach(Persona puntero in Almacenamiento)
+            foreach(I_Comparable puntero in Almacenamiento)
             {
                 if(pertenece.Equals(false))
                     pertenece= puntero.Equals(elemento) ? true : false;
@@ -40,10 +40,10 @@ namespace MetProgI.Folder_Coleccionables
             return this.Almacenamiento.Count;
         }
 
-        public Persona minimo()
+        public I_Comparable minimo()
         {
-            Persona minimo = Almacenamiento[0];
-            foreach (Persona elemento in Almacenamiento)
+            I_Comparable minimo = Almacenamiento[0];
+            foreach (I_Comparable elemento in Almacenamiento)
             {
                 if (elemento.ToString().CompareTo(minimo.ToString()) < 0)
                 {
@@ -53,10 +53,10 @@ namespace MetProgI.Folder_Coleccionables
             return minimo;
         }
 
-        public Persona maximo()
+        public I_Comparable maximo()
         {
-            Persona maximo = Almacenamiento[0];
-            foreach (Persona elemento in Almacenamiento)
+            I_Comparable maximo = Almacenamiento[0];
+            foreach (I_Comparable elemento in Almacenamiento)
             {
                 if (elemento.ToString().CompareTo(maximo.ToString()) < 0)
                 {
@@ -66,9 +66,9 @@ namespace MetProgI.Folder_Coleccionables
             return maximo;
         }
 
-        public bool contiene(Persona comparable)
+        public bool contiene(I_Comparable comparable)
         {
-            foreach (Persona elemento in Almacenamiento)
+            foreach (I_Comparable elemento in Almacenamiento)
             {
                 if (elemento.Equals(comparable))
                     return true;
