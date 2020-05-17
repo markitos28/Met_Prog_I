@@ -27,6 +27,8 @@ namespace MetProgI
                 Console.WriteLine("10) Llenar, informar y comparar Comparables (E6P3)");
                 Console.WriteLine("11) Llenar, informar y comparar Vendedores (E9P3)");
                 Console.WriteLine("12) Patron Observer (E14P3)");
+                Console.WriteLine("13) Patron Adapter (E4P4 y E8P4)");
+                Console.WriteLine("14) Patron Decorator (E7P4)");
                 Console.WriteLine("0) Salir");
                 Console.WriteLine();
                 Console.Write("Ingrese su opcion: ");
@@ -99,6 +101,16 @@ namespace MetProgI
                         break;
                     case 12:
                         Patron_Observer.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 13:
+                        Patron_Adapter.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 14:
+                        Patron_Decorator.Main.Run();
                         Console.ReadKey();
                         Console.Clear();
                         break;
