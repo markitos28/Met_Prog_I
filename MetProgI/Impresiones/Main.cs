@@ -272,8 +272,8 @@ namespace MetProgI.Impresiones
         public static void llenar(IColeccionable<I_Comparable> coleccion, int eleccion)
         {
             //Ejercicio 6 practica 3
-            // Elecciones: Persona(1) / Alumno(2) / ClaveValor(3) / Numero(4)
-            switch(eleccion)
+            // Elecciones: Persona(1) / Alumno(2) / Numero(3) / ClaveValor(4) / Vendedor(5) / AlumnoMuyEstudioso(6)
+            switch (eleccion)
             {
                 case 1:
                     for (int i = 0; i < 20; i++)
@@ -287,7 +287,7 @@ namespace MetProgI.Impresiones
                         coleccion.agregar(new FabricaAlumno().crearAleatorio()) ;
                     }
                     break;
-                //case 3:
+                //case 4:
                 //    for (int i = 0; i < 20; i++)
                 //    {
                 //        coleccion.agregar(new FabricaClaveValor().crearAleatorio());
@@ -303,6 +303,12 @@ namespace MetProgI.Impresiones
                     for (int i = 0; i < 20; i++)
                     {
                         coleccion.agregar(new FabricaVendedor().crearAleatorio());
+                    }
+                    break;
+                case 6: // Ejercicio 10 Practica 5: Llenar una coleccion con alumnos muy estudiosos
+                    for (int i = 0; i < 20; i++)
+                    {
+                        coleccion.agregar(new FabricaAlumnoMuyEstudioso().crearAleatorio());
                     }
                     break;
                 default:

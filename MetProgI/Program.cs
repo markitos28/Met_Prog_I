@@ -4,6 +4,7 @@ using MetProgI.Folder_Comparables;
 using MetProgI.Generador_Random;
 using MetProgI.Patron_Iterator;
 using MetProgI.Patron_Strategy;
+using MetProgI.Patron_Command;
 
 namespace MetProgI
 {
@@ -29,6 +30,8 @@ namespace MetProgI
                 Console.WriteLine("12) Patron Observer (E14P3)");
                 Console.WriteLine("13) Patron Adapter (E4P4 y E8P4)");
                 Console.WriteLine("14) Patron Decorator (E7P4)");
+                Console.WriteLine("15) Patron Proxy (E2P5)");
+                Console.WriteLine("16) Patron Command (E10P5)");
                 Console.WriteLine("0) Salir");
                 Console.WriteLine();
                 Console.Write("Ingrese su opcion: ");
@@ -114,6 +117,16 @@ namespace MetProgI
                         Console.ReadKey();
                         Console.Clear();
                         break;
+                    case 15:
+                        Patron_Proxy.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 16:
+                        Patron_Command.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break; 
                     case 0:
                         salir = true;
                         break;

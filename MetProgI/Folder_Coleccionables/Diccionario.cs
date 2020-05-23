@@ -5,15 +5,21 @@ using MetProgI.Folder_Comparables;
 using MetProgI.Generador_Random;
 using MetProgI.Patron_Iterator;
 using MetProgI.Patron_Strategy;
+using MetProgI.Patron_Command;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class Diccionario: IColeccionable<I_Comparable>, CreateIterator
+    class Diccionario: IColeccionable<I_Comparable>, CreateIterator, Ordenable
     {
         private List<ClaveValor> _clave_valor;
         private Numero _claveDefault;
         public List<ClaveValor> Lista_ClaveValor { get { return _clave_valor; } private set { _clave_valor = value; } }
         public Numero ClaveDefault { get{ return _claveDefault; } set{ _claveDefault = value;  } }
+
+        public OrdenEnAula1 OrdenInicioEnAula { get; set; }
+
+        public OrdenEnAula1 OrdenEnAulaLlena { get; set; }
+        public OrdenEnAula2 OrdenLlegaAlumno { get; set; }
 
 
         public Diccionario()
@@ -125,6 +131,21 @@ namespace MetProgI.Folder_Coleccionables
         public IIterator CreateIterator()
         {
             return new ConcreteIterator_Diccionario(this);
+        }
+
+        public void setOrdenInicio(OrdenEnAula1 OEA1)
+        {
+            OrdenInicioEnAula = OEA1;
+        }
+
+        public void setOrdenLlegaAlumno(OrdenEnAula2 OEA2)
+        {
+            OrdenLlegaAlumno = OEA2;
+        }
+
+        public void setOrdenAulaLlena(OrdenEnAula1 OEA1)
+        {
+            OrdenEnAulaLlena = OEA1;
         }
     }
 }

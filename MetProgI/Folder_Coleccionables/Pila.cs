@@ -5,14 +5,19 @@ using MetProgI.Folder_Comparables;
 using MetProgI.Generador_Random;
 using MetProgI.Patron_Iterator;
 using MetProgI.Patron_Strategy;
+using MetProgI.Patron_Command;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class Pila : IColeccionable<I_Comparable>, CreateIterator
+    class Pila : IColeccionable<I_Comparable>, CreateIterator, Ordenable
     { 
 
         List<I_Comparable> pila;
 
+        public OrdenEnAula1 OrdenInicioEnAula { get; set; }
+
+        public OrdenEnAula1 OrdenEnAulaLlena { get; set; }
+        public OrdenEnAula2 OrdenLlegaAlumno { get; set; }
         #region Propio:
         public Pila()
         {
@@ -21,7 +26,14 @@ namespace MetProgI.Folder_Coleccionables
         //Agrega un elemento a la cola.
         public void push(I_Comparable elemento)
         {
+            if (this.pila.Count.Equals(0))
+                OrdenInicioEnAula.ejecutar();
+
             this.pila.Add(elemento);
+            OrdenLlegaAlumno.ejecutar(elemento);
+
+            if (this.pila.Count.Equals(39))
+                OrdenEnAulaLlena.ejecutar();
         }
 
         //Extraer un elemento de cola.
@@ -114,7 +126,14 @@ namespace MetProgI.Folder_Coleccionables
         //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
         public void agregar(I_Comparable comparable)
         {
+            if (this.pila.Count.Equals(0))
+                OrdenInicioEnAula.ejecutar();
+
             this.pila.Add(comparable);
+            OrdenLlegaAlumno.ejecutar(comparable);
+
+            if (this.pila.Count.Equals(39))
+                OrdenEnAulaLlena.ejecutar();
         }
 
         //Devuelve verdadero si el comparable recibido por parámetro está incluido en la colección y falso en caso contrario
@@ -133,6 +152,21 @@ namespace MetProgI.Folder_Coleccionables
         public IIterator CreateIterator()
         {
             return new ConcreteIterator_Pila(this);
+        }
+
+        public void setOrdenInicio(OrdenEnAula1 OEA1)
+        {
+            OrdenInicioEnAula = OEA1;
+        }
+
+        public void setOrdenLlegaAlumno(OrdenEnAula2 OEA2)
+        {
+            OrdenLlegaAlumno = OEA2;
+        }
+
+        public void setOrdenAulaLlena(OrdenEnAula1 OEA1)
+        {
+            OrdenEnAulaLlena = OEA1;
         }
         #endregion
     }
