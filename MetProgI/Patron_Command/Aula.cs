@@ -18,7 +18,7 @@ namespace MetProgI.Patron_Command
             Profesor = new Teacher();
         }
 
-        public void nuevoAlumno(Alumno estudiante)
+        public void nuevoAlumno(AbsAlumno estudiante)
         {
             AdapterStudent adaptado = new AdapterStudent(estudiante);
             Profesor.goToClass(adaptado);

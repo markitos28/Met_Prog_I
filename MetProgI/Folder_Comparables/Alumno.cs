@@ -6,21 +6,21 @@ using MetProgI.Patron_Decorator;
 
 namespace MetProgI.Folder_Comparables
 {
-    public class Alumno : Persona, IImprimirDec //, IStrategy<Humano> ,IComparable<Alumno> Nota: Se quita la interfaz IStrategy para no implementar los comparadores con dos argumentos.
+    public class Alumno : AbsAlumno//Persona, IImprimirDec , IStrategy<Humano> ,IComparable<Alumno> Nota: Se quita la interfaz IStrategy para no implementar los comparadores con dos argumentos.
     {
-        private int _legajo;
-        private double _promedio;
-        private double _calificacion;
-        public int Legajo { get { return _legajo; } protected set { _legajo = value; } }
-        public double Promedio { get { return _promedio; } protected set { _promedio = value; } }
-        public double Calificacion { get { return _calificacion; } set { _calificacion = value; } }
+        //private int _legajo;
+        //private double _promedio;
+        //private double _calificacion;
+        public override int Legajo { get; set; }
+        public override double Promedio { get; set; }
+        public override double Calificacion { get; set; }
 
         public Alumno(string in_nombre, int in_dni, int in_legajo, double in_promedio)
         {
             base.Nombre = in_nombre;
             base.DNI = in_dni;
-            this._legajo = in_legajo;
-            this._promedio = in_promedio;
+            this.Legajo = in_legajo;
+            this.Promedio = in_promedio;
             base.Estrategia = new StratComparacion_Nombre();
         }
 
@@ -39,18 +39,18 @@ namespace MetProgI.Folder_Comparables
             return base.Estrategia.sosMayor(this, comparable);
         }
 
-        public int responderPregunta(int pregunta)
+        public override int responderPregunta(int pregunta)
         {
             return new Random().Next(1, 3);
         }
 
-        public string mostrarCalificacion()
+        public override string mostrarCalificacion()
         {
             //Console.WriteLine("El alumno {0} obtuvo una nota de {1} en sus examenes.", this.Nombre, this.Calificacion);
             return this.Nombre + "\t" + this.Calificacion;
         }
 
-        public string imprimirDecorado()
+        public override string imprimirDecorado()
         {
             throw new NotImplementedException();
         }

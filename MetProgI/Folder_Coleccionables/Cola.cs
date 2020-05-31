@@ -125,13 +125,14 @@ namespace MetProgI.Folder_Coleccionables
         //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
         public void agregar(I_Comparable comparable)
         {
-            if (this.cola.Count.Equals(0))
+            if (this.cola.Count.Equals(0) && OrdenInicioEnAula !=null)
                 OrdenInicioEnAula.ejecutar();
 
             this.cola.Add(comparable);
-            OrdenLlegaAlumno.ejecutar(comparable);
+            if(OrdenLlegaAlumno != null)
+                OrdenLlegaAlumno.ejecutar(comparable);
 
-            if (this.cola.Count.Equals(39))
+            if (this.cola.Count.Equals(39) && OrdenEnAulaLlena != null)
                 OrdenEnAulaLlena.ejecutar();
         }
 

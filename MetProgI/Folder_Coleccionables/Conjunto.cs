@@ -25,15 +25,15 @@ namespace MetProgI.Folder_Coleccionables
 
         public void agregar(I_Comparable elemento)
         {
-            if (Almacenamiento.Count.Equals(0))
+            if (Almacenamiento.Count.Equals(0) && TypeOrdenEnAula1A != null)
                 TypeOrdenEnAula1A.ejecutar();
 
             if (pertenece(elemento).Equals(false))
                 Almacenamiento.Add(elemento);
-
+            if(TypeOrdenEnAula2 != null)
             TypeOrdenEnAula2.ejecutar(elemento);
 
-            if (Almacenamiento.Count.Equals(39)) 
+            if (Almacenamiento.Count.Equals(39) && TypeOrdenEnAula1B != null) 
             {
                 /*arreglar y consultar con el profesor*/
                 TypeOrdenEnAula1B.ejecutar();

@@ -11,6 +11,11 @@ namespace MetProgI.Folder_Comparables
         private string _nombre;
         private int _dni;
         private IStrategy<Persona> _estrategia;
+        
+        // Propiedades de un jugador: 
+        public List<Carta> cartas { get; set; }
+        public int Puntaje { get; set; }
+        // ------------------------------------------------------
         public string Nombre { get { return this._nombre; } set { this._nombre = value; } }
         public int DNI { get { return this._dni; } set { this._dni = value; } }
         public IStrategy<Persona> Estrategia { get { return this._estrategia; } set { this._estrategia = value; } }
@@ -20,10 +25,12 @@ namespace MetProgI.Folder_Comparables
             Nombre = in_nombre;
             DNI = in_dni;
             Estrategia = new StratComparacion_Nombre();
+            
         }
         public Persona()
         {
             Estrategia = new StratComparacion_Nombre();
+            cartas = new List<Carta>();
         }
 
         public bool sosIgual(I_Comparable comparable)

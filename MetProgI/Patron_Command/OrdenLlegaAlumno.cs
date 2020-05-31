@@ -16,7 +16,7 @@ namespace MetProgI.Patron_Command
         }
         public void ejecutar(I_Comparable a)
         {
-            Aula2.nuevoAlumno((Alumno)a);
+            Aula2.nuevoAlumno((AbsAlumno)a);
         }
     }
 }

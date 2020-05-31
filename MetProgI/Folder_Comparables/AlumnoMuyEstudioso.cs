@@ -6,22 +6,38 @@ using MetodologíasDeProgramaciónI;
 
 namespace MetProgI.Folder_Comparables
 {
-    public class AlumnoMuyEstudioso : Alumno //, IStrategy<Humano> ,IComparable<Alumno> Nota: Se quita la interfaz IStrategy para no implementar los comparadores con dos argumentos.
+    public class AlumnoMuyEstudioso : AbsAlumno//Alumno , IStrategy<Humano> ,IComparable<Alumno> Nota: Se quita la interfaz IStrategy para no implementar los comparadores con dos argumentos.
     {
-        public AlumnoMuyEstudioso(string in_nombre, int in_dni, int in_legajo, double in_promedio) : base(in_nombre, in_dni, in_legajo, in_promedio)
+        public override int Legajo { get ; set; }
+        public override double Promedio { get ; set ; }
+        public override double Calificacion { get ; set ; }
+
+        public AlumnoMuyEstudioso(string in_nombre, int in_dni, int in_legajo, double in_promedio)
         {
             base.Nombre = in_nombre;
             base.DNI = in_dni;
-            base.Legajo = in_legajo;
-            base.Promedio = in_promedio;
+            this.Legajo = in_legajo;
+            this.Promedio = in_promedio;
             base.Estrategia = new StratComparacion_Nombre();
             
         }
 
-        public new int responderPregunta(int pregunta)
+        
+        public override string imprimirDecorado()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override int responderPregunta(int pregunta)
         {
             int respuesta = pregunta % 3;
             return respuesta;
+        }
+
+        public override string mostrarCalificacion()
+        {
+            //Console.WriteLine("El alumno {0} obtuvo una nota de {1} en sus examenes.", this.Nombre, this.Calificacion);
+            return this.Nombre + "\t" + this.Calificacion;
         }
 
 

@@ -6,16 +6,15 @@ using MetProgI.Patron_Observer; using MetProgI.Patron_Strategy; using Metodolog√
 
 namespace MetProgI.Patron_Proxy
 {
-    public class AlumnoProxy : Student, I_Comparable
+    public class AlumnoProxy : AbsAlumno, Student, I_Comparable
     {
         private Alumno _alumnoproxy = null;
         public Alumno ProxyAlumno { get { return _alumnoproxy; } private set { _alumnoproxy = value; } }
         public string Nombre { get; set; }
         public int DNI { get; set; }
-        public int Legajo { get; set; }
-        public double Promedio { get; set; }
-        public double Calificacion { get; set; }
-
+        public override int Legajo { get; set; }
+        public override double Promedio { get; set; }
+        public override double Calificacion { get; set; }
 
         public AlumnoProxy(string in_nombre, int in_dni, int in_legajo, double in_promedio) 
         {
@@ -83,6 +82,21 @@ namespace MetProgI.Patron_Proxy
         }
 
         public bool sosMayor(I_Comparable comparable)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string imprimirDecorado()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string mostrarCalificacion()
+        {
+            return this.Nombre + "\t" + this.Calificacion;
+        }
+
+        public override int responderPregunta(int pregunta)
         {
             throw new NotImplementedException();
         }

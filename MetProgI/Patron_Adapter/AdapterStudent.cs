@@ -8,12 +8,12 @@ namespace MetProgI.Patron_Adapter
 {
     public class AdapterStudent : Student
     {
-        private Alumno _adaptado;
+        private AbsAlumno _adaptado;
 
-        public Alumno Adaptado {  get { return _adaptado;  } set { _adaptado = value; } }
+        public AbsAlumno Adaptado {  get { return _adaptado;  } set { _adaptado = value; } }
         //public AdapterStudent(string in_nombre, int in_dni, int in_legajo, double in_promedio) : base(in_nombre, in_dni, in_legajo, in_promedio) { }
 
-        public AdapterStudent(Alumno inAlumno)
+        public AdapterStudent(AbsAlumno inAlumno)
         {
             Adaptado = inAlumno;
         }

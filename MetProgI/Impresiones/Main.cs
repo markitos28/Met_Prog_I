@@ -260,13 +260,13 @@ namespace MetProgI.Impresiones
         public static void informar(IColeccionable<I_Comparable> coleccion)
         {
             // Ejercicio 10 practica 2
-            Alumno maximo = (Alumno)coleccion.maximo();
-            Alumno minimo = (Alumno)coleccion.minimo();
+            I_Comparable maximo = coleccion.maximo();
+            I_Comparable minimo = coleccion.minimo();
             Console.WriteLine("Elementos de la Coleccion:\n" +
                 "Maximo:\n\tAlumno: {0}\tDNI: {1}\tLegajo: {2}\tPromedio: {3}\n" +
                 "Minimo:\n\tAlumno: {4}\tDNI: {5}\tLegajo: {6}\tPromedio: {7}",
-                     maximo.Nombre, maximo.DNI, maximo.Legajo, maximo.Promedio,
-                     minimo.Nombre, minimo.DNI, minimo.Legajo, minimo.Promedio);
+                     ((AbsAlumno)maximo).Nombre, ((AbsAlumno)maximo).DNI, ((AbsAlumno)maximo).Legajo, ((AbsAlumno)maximo).Promedio,
+                     ((AbsAlumno)minimo).Nombre, ((AbsAlumno)minimo).DNI, ((AbsAlumno)minimo).Legajo, ((AbsAlumno)minimo).Promedio);
         }
 
         public static void llenar(IColeccionable<I_Comparable> coleccion, int eleccion)

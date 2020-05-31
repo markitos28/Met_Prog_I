@@ -9,7 +9,7 @@ using MetProgI.Patron_Command;
 
 namespace MetProgI.Folder_Coleccionables
 {
-    class Pila : IColeccionable<I_Comparable>, CreateIterator, Ordenable
+    public class Pila : IColeccionable<I_Comparable>, CreateIterator, Ordenable
     { 
 
         List<I_Comparable> pila;
@@ -26,13 +26,14 @@ namespace MetProgI.Folder_Coleccionables
         //Agrega un elemento a la cola.
         public void push(I_Comparable elemento)
         {
-            if (this.pila.Count.Equals(0))
+            if (this.pila.Count.Equals(0) && OrdenInicioEnAula != null)
                 OrdenInicioEnAula.ejecutar();
 
             this.pila.Add(elemento);
-            OrdenLlegaAlumno.ejecutar(elemento);
+            if(OrdenLlegaAlumno != null)
+                OrdenLlegaAlumno.ejecutar(elemento);
 
-            if (this.pila.Count.Equals(39))
+            if (this.pila.Count.Equals(39) && OrdenEnAulaLlena != null)
                 OrdenEnAulaLlena.ejecutar();
         }
 
@@ -126,13 +127,14 @@ namespace MetProgI.Folder_Coleccionables
         //Agrega el comparable recibido por parámetro a la colección que recibe el mensaje
         public void agregar(I_Comparable comparable)
         {
-            if (this.pila.Count.Equals(0))
+            if (this.pila.Count.Equals(0) && OrdenInicioEnAula!= null)
                 OrdenInicioEnAula.ejecutar();
 
             this.pila.Add(comparable);
+            if(OrdenLlegaAlumno != null)
             OrdenLlegaAlumno.ejecutar(comparable);
 
-            if (this.pila.Count.Equals(39))
+            if (this.pila.Count.Equals(39) && OrdenEnAulaLlena != null)
                 OrdenEnAulaLlena.ejecutar();
         }
 

@@ -32,6 +32,8 @@ namespace MetProgI
                 Console.WriteLine("14) Patron Decorator (E7P4)");
                 Console.WriteLine("15) Patron Proxy (E2P5)");
                 Console.WriteLine("16) Patron Command (E10P5)");
+                Console.WriteLine("17) Patron Composite (E2P6)");
+                Console.WriteLine("18) Patron Template_Method (E3P6)");
                 Console.WriteLine("0) Salir");
                 Console.WriteLine();
                 Console.Write("Ingrese su opcion: ");
@@ -126,7 +128,17 @@ namespace MetProgI
                         Patron_Command.Main.Run();
                         Console.ReadKey();
                         Console.Clear();
-                        break; 
+                        break;
+                    case 17:
+                        Patron_Composite.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 18:
+                        Patron_TemplateMethod.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
                     case 0:
                         salir = true;
                         break;
