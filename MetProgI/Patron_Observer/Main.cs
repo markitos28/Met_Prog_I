@@ -35,7 +35,7 @@ namespace MetProgI.Patron_Observer
             while(!iter.EsFin())
             {
                 Vendedor elemento = (Vendedor)iter.Siguiente();
-                monto = new GeneradorDeDatosAleatorios().numeroAleatorio(7000);
+                monto =  GeneradorDeDatosAleatorios.getInstance(null).numeroAleatorio(7000);
                 elemento.venta(monto);
                 
             }

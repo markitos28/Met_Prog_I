@@ -109,7 +109,7 @@ namespace MetProgI.Impresiones
                               "3) Numero. \n");
 
             Console.Write("Por favor, ingrese que tipo de Comparable desea crear para llenar la Pila: ");
-            int eleccion_p = new LectorDeDatos().numeroPorTeclado();
+            int eleccion_p = new LectorDeDatos(null).numeroPorTeclado();
             llenar(newPila, eleccion_p);
             //Console.Write("\nDesea mostrar los elementos que se generaron? (S/N): ");
             //string eleccion_str = new LectorDeDatos().stringPorTeclado();
@@ -127,7 +127,7 @@ namespace MetProgI.Impresiones
                               "3) Numero. \n");
             
             Console.Write("Por favor, ingrese que tipo de Comparable desea crear para llenar la Cola: ");
-            int eleccion_c = new LectorDeDatos().numeroPorTeclado();
+            int eleccion_c = new LectorDeDatos(null).numeroPorTeclado();
             llenar(newCola, eleccion_c);
             //Console.Write("\nDesea mostrar los elementos que se generaron? (S/N): ");
             //eleccion_str = new LectorDeDatos().stringPorTeclado();
@@ -146,7 +146,7 @@ namespace MetProgI.Impresiones
                               "3) Numero. \n");
 
             Console.Write("Por favor, ingrese que tipo de Comparable desea crear para llenar el Conjunto: ");
-            int eleccion_cj = new LectorDeDatos().numeroPorTeclado();
+            int eleccion_cj = new LectorDeDatos(null).numeroPorTeclado();
             llenar(newConjunto, eleccion_cj);
             //Console.Write("\nDesea mostrar los elementos que se generaron? (S/N): ");
             //eleccion_str = new LectorDeDatos().stringPorTeclado();
@@ -166,7 +166,7 @@ namespace MetProgI.Impresiones
                               "3) Numero. \n");
 
             Console.Write("Por favor, ingrese que tipo de Comparable desea crear para llenar el Diccionario: ");
-            int eleccion_d = new LectorDeDatos().numeroPorTeclado();
+            int eleccion_d = new LectorDeDatos(null).numeroPorTeclado();
             llenar(newDiccionario, eleccion_d);
             //Console.Write("\nDesea mostrar los elementos que se generaron? (S/N): ");
             //eleccion_str = new LectorDeDatos().stringPorTeclado();
@@ -278,7 +278,7 @@ namespace MetProgI.Impresiones
                 case 1:
                     for (int i = 0; i < 20; i++)
                     {
-                        coleccion.agregar(new Persona(new GeneradorDeDatosAleatorios().stringAleatorio(15), new GeneradorDeDatosAleatorios().numeroAleatorio(44000000)));
+                        coleccion.agregar(new Persona(GeneradorDeDatosAleatorios.getInstance(null).stringAleatorio(15), GeneradorDeDatosAleatorios.getInstance(null).numeroAleatorio(44000000)));
                     }
                     break;
                 case 2:
@@ -333,7 +333,7 @@ namespace MetProgI.Impresiones
                              maximo_p.Nombre, maximo_p.DNI,
                              minimo_p.Nombre, minimo_p.DNI);
                     Console.Write("\nPor favor, ingrese un DNI para saber si se encuentra dentro de la coleccion: ");
-                    int input = new LectorDeDatos().numeroPorTeclado();
+                    int input = new LectorDeDatos(null).numeroPorTeclado();
                     Persona newElemento = new Persona("Usuario", input);
                     newElemento.Estrategia = new StratComparacion_DNI();
                     if (coleccion.contiene(newElemento))
@@ -351,7 +351,7 @@ namespace MetProgI.Impresiones
                              maximo_a.Nombre, maximo_a.DNI, maximo_a.Legajo, maximo_a.Promedio,
                              minimo_a.Nombre, minimo_a.DNI, minimo_a.Legajo, minimo_a.Promedio);
                     Console.Write("\nPor favor, ingrese un DNI para saber si se encuentra dentro de la coleccion: ");
-                    input = new LectorDeDatos().numeroPorTeclado();
+                    input = new LectorDeDatos(null).numeroPorTeclado();
                     newElemento = new Persona("Usuario", input);
                     newElemento.Estrategia = new StratComparacion_DNI();
                     if (coleccion.contiene(newElemento))
@@ -386,7 +386,7 @@ namespace MetProgI.Impresiones
                              coleccion.cuantos(),
                              maximo_nro.Valor, minimo_nro.Valor);
                     Console.Write("\nPor favor, ingrese un Numero para saber si se encuentra dentro de la coleccion: ");
-                    input = new LectorDeDatos().numeroPorTeclado();
+                    input = new LectorDeDatos(null).numeroPorTeclado();
                     Numero newElemento_nro = new Numero(input);
                     //newElemento_nro.Estrategia = new StratComparacion_DNI();
                     if (coleccion.contiene(newElemento_nro))
@@ -405,9 +405,9 @@ namespace MetProgI.Impresiones
                              maximo_vend.Nombre, minimo_vend.Nombre);
                     Console.Write("\nPor favor, ingrese puntos de Bonus para saber si se encuentra dentro de la coleccion: ");
                     double puntos = Convert.ToDouble(Console.ReadLine());
-                    Vendedor newElemento_vend = new Vendedor(new GeneradorDeDatosAleatorios().stringAleatorio(15),
-                                                             new GeneradorDeDatosAleatorios().numeroAleatorio(44000000),
-                                                             new GeneradorDeDatosAleatorios().numeroAleatorio(60000));
+                    Vendedor newElemento_vend = new Vendedor(GeneradorDeDatosAleatorios.getInstance(null).stringAleatorio(15),
+                                                             GeneradorDeDatosAleatorios.getInstance(null).numeroAleatorio(44000000),
+                                                             GeneradorDeDatosAleatorios.getInstance(null).numeroAleatorio(60000));
                     newElemento_vend.Bonus = puntos;//Comentando esta linea de codigo, entrará en el if (considerando que primero, el vendedor, debe 
                                                     //sumar ventas antes de ser comparado, ya que todos comienzan con puntos de bonus en 1.0)
                                                     //A menos que el usuario ingrese los puntos 1.0

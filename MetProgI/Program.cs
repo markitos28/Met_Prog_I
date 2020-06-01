@@ -34,6 +34,7 @@ namespace MetProgI
                 Console.WriteLine("16) Patron Command (E10P5)");
                 Console.WriteLine("17) Patron Composite (E2P6)");
                 Console.WriteLine("18) Patron Template_Method (E3P6)");
+                Console.WriteLine("19) Patron Template_ChainofResponsability (E3P7)");
                 Console.WriteLine("0) Salir");
                 Console.WriteLine();
                 Console.Write("Ingrese su opcion: ");
@@ -86,11 +87,11 @@ namespace MetProgI
                         break;
                     case 9:
                         Console.Write("\nElija la cantidad de caracteres que desea tener el nombre (mayor a 10): ");
-                        int opcion = new LectorDeDatos().numeroPorTeclado();
-                        Console.WriteLine("Nombre: " + new GeneradorDeDatosAleatorios().stringAleatorio(opcion));
+                        int opcion = new LectorDeDatos(null).numeroPorTeclado();
+                        Console.WriteLine("Nombre: " +  GeneradorDeDatosAleatorios.getInstance(null).stringAleatorio(opcion));
                         Console.Write("\n\nElija un numero maximo del cual obtener un numero aleatorio: ");
-                        opcion = new LectorDeDatos().numeroPorTeclado();
-                        Console.WriteLine("Numero: " + new GeneradorDeDatosAleatorios().numeroAleatorio(opcion));
+                        opcion = new LectorDeDatos(null).numeroPorTeclado();
+                        Console.WriteLine("Numero: " +  GeneradorDeDatosAleatorios.getInstance(null).numeroAleatorio(opcion));
                         Console.ReadKey();
                         Console.Clear();
                         break;
@@ -136,6 +137,11 @@ namespace MetProgI
                         break;
                     case 18:
                         Patron_TemplateMethod.Main.Run();
+                        Console.ReadKey();
+                        Console.Clear();
+                        break;
+                    case 19:
+                        Patron_ChainofResponsability.Main.Run();
                         Console.ReadKey();
                         Console.Clear();
                         break;

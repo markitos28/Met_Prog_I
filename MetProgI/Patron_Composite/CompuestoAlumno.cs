@@ -14,6 +14,8 @@ namespace MetProgI.Patron_Composite
         public override int Legajo { get { return base._legajo; } set { base._legajo = value; } }
         public override double Promedio { get { return this.Promedio; } set { this.Promedio = value; } }
         public override double Calificacion { get { return base._calificacion; } set { base._calificacion=(int)value; } }
+        public string Nombre { get { return base._nombre; } set { base._nombre=value; } }
+        public int DNI { get { return base._dni; } set { base._dni = value; } }
 
         public CompuestoAlumno(string in_nombre, int in_dni, int in_legajo, int in_calificacion) : base(in_nombre, in_dni, in_legajo, in_calificacion)
         {
@@ -25,7 +27,7 @@ namespace MetProgI.Patron_Composite
             string calificaciones = "";
             foreach (AbsAlumno puntero in _alumnosCompuestos)
             {
-                calificaciones+=" "+ puntero.mostrarCalificacion();
+                calificaciones+="\n "+ puntero.mostrarCalificacion();
             }
             return calificaciones;
         }
@@ -121,7 +123,7 @@ namespace MetProgI.Patron_Composite
 
         public override string imprimirDecorado()
         {
-            return "";
+            return "\n";
         }
 
         public override int responderPregunta(int pregunta)
