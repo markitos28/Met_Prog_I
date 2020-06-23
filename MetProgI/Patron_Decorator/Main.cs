@@ -33,14 +33,22 @@ namespace MetProgI.Patron_Decorator
 
             DecoradoRecuadroAsteriscos d = new DecoradoRecuadroAsteriscos(c.estudiante);
             imprimir = new DecoradoRecuadroAsteriscos(adaptado).imprimirDecorado();
-            //Console.Clear();
+            Console.Clear();
             Console.WriteLine(imprimir);
             Console.ReadKey();
 
-            imprimir = d.imprimirDecorado();    
-            //Console.Clear();
-            Console.WriteLine(imprimir);
-            //Console.ReadKey();
+            // agregado 23/06
+
+            Student marcos = new AdapterStudent((Alumno)new FabricaAlumno().crearAleatorio());
+            AbsDecoradoresAdicionales primerDecorado = new DecoradoLegajo(marcos);
+            primerDecorado = new DecoradoNotasEnLetras(primerDecorado);
+            primerDecorado = new DecoradoPromocion(primerDecorado);
+            primerDecorado = new DecoradoRecuadroAsteriscos(primerDecorado);
+            Console.Clear();
+            Console.WriteLine(primerDecorado.imprimirDecorado());
+            Console.ReadKey();
+
+            //----------------------------
         }
     }
 }

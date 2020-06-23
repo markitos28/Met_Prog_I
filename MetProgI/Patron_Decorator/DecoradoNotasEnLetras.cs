@@ -19,6 +19,11 @@ namespace MetProgI.Patron_Decorator
             return decoratedCalification;
         }
 
+        public override string showResult()
+        {
+            return imprimirDecorado();
+        }
+
         private string letrasXnumeros(int aConvertir)
         {
             string[] numerosConvertidos = { "CERO", "UNO", "DOS","TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE", "DIEZ"};

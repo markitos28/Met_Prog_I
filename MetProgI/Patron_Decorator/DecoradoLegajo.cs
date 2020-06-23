@@ -21,5 +21,10 @@ namespace MetProgI.Patron_Decorator
             string decoratedCalification = splitCalification[0] + " (" + alumno.Adaptado.Legajo + ") " + "\t" + splitCalification[1];
             return decoratedCalification;
         }
+
+        public override string showResult()
+        {
+            return imprimirDecorado();
+        }
     }
 }

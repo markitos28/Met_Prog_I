@@ -29,5 +29,10 @@ namespace MetProgI.Patron_Decorator
             
             return decoratedCalification;
         }
+
+        public override string showResult()
+        {
+            return imprimirDecorado();
+        }
     }
 }
